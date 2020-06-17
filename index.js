@@ -10,13 +10,9 @@ const bot = new SlackBot({
 });
 
 function createJob() {
-    /*
     const task = cron.schedule('15 12 * * 1-5', () => {
-        bot.postMessageToUser('karen', 'hi!');
-    }); */
-
-    const task = cron.schedule('0,15,30,45 * * * * *', () => {
-        bot.postMessageToUser('karen', 'hi!');
+        bot.postMessageToUser('karen', 'go eat lunch ali');
+        bot.postMessageToUser('ali', 'go eat lunch ali');
     });
 
     task.start();
