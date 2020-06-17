@@ -1,19 +1,30 @@
 const SlackBot = require('slackbots');
 const dotenv = require('dotenv');
+const cron = require('node-cron');
 
 dotenv.config();
 
-var bot = new SlackBot({
-    token: `${process.env.BOT_TOKEN}`, // Add a bot https://my.slack.com/services/new/bot and put the token
+const bot = new SlackBot({
+    token: `${process.env.BOT_TOKEN}`,
     name: 'lunchbot',
 });
 
-bot.on('start', function () {
-    // more information about additional params https://api.slack.com/methods/chat.postMessage
-    var params = {
-        icon_emoji: ':apple:',
-    };
+function createJob() {
+    /*
+    const task = cron.schedule('15 12 * * 1-5', () => {
+        bot.postMessageToUser('karen', 'hi!');
+    }); */
 
-    // define existing username instead of 'user_name'
-    bot.postMessageToUser('karen', 'hi!');
+    const task = cron.schedule('0,15,30,45 * * * * *', () => {
+        bot.postMessageToUser('karen', 'hi!');
+    });
+
+    task.start();
+}
+
+bot.on('start', function () {
+    bot.postMessageToUser('karen', 'starting');
+    createJob();
 });
+
+bot.on('open', function () {});
