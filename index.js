@@ -26,5 +26,3 @@ bot.on('start', function () {
     bot.postMessageToUser('karen', 'starting');
     createJob();
 });
-
-bot.on('open', function () {});
