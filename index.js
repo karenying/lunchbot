@@ -19,6 +19,7 @@ function createJob() {
     const task = cron.schedule('15 19 * * 1-5', () => {
         bot.postMessageToUser('karen', 'go eat lunch ali');
         bot.postMessageToUser('ali', 'go eat lunch ali');
+        bot.postMessageToUser('steven', 'go eat lunch ali');
     });
 
     task.start();
