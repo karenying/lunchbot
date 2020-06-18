@@ -16,16 +16,14 @@ function createJob() {
         bot.postMessageToUser('ali', 'go eat lunch ali');
     }); */
 
-    const task = cron.schedule('15 19 * * 1-5', () => {
-        bot.postMessageToUser('karen', 'go eat lunch ali');
-        bot.postMessageToUser('ali', 'go eat lunch ali');
-        bot.postMessageToUser('steven', 'go eat lunch ali');
+    const task = cron.schedule('30 20 * * 1-5', () => {
+        bot.postMessageToChannel('lunchbot-test', 'test');
     });
 
     task.start();
 }
 
 bot.on('start', function () {
-    bot.postMessageToUser('karen', 'starting');
+    bot.postMessageToUser('karen', 'lunchbox starting...');
     createJob();
 });
