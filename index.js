@@ -25,6 +25,6 @@ function createJob() {
 }
 
 bot.on('start', function () {
-    bot.postMessageToUser('karen', 'lunchbox starting...');
+    // bot.postMessageToUser('karen', 'lunchbox starting...');
     createJob();
 });
